@@ -1,3 +1,7 @@
+#호출법#
+#python make_place_profile.py --place_id 31751923 --store_name "신통치킨 단국대점" --cuisine "치킨","닭강정" --mode summary#
+
+
 # make_place_profile.py — Naver Place 태그 수집 (FAST: 요약 패널 기본)
 from __future__ import annotations
 import time, csv, json, argparse, datetime as dt, re
