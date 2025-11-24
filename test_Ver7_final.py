@@ -43,9 +43,10 @@ import streamlit as st
 # 폰트 파일을 추가한 경로를 지정합니다.
 import streamlit as st
 import base64
+import os
 
 # 1. 폰트 읽어서 base64 인코딩
-font_path = "UI_build/Asia신디나루M.ttf"
+font_path = os.path.join(os.path.dirname(__file__), "UI_build", "Asia신디나루M.ttf")
 
 with open(font_path, "rb") as f:
     font_bytes = f.read()
