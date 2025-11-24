@@ -15,6 +15,15 @@ driver = GraphDatabase.driver(
 )
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+# -------------------------
+# ⭐ Neo4j Aura 연결 테스트 ⭐
+# -------------------------
+try:
+    driver.verify_connectivity()
+    print("✅ Neo4j Aura 연결 성공!")
+except Exception as e:
+    print("❌ Neo4j Aura 연결 실패:", repr(e))
+
 
 # Neo4j 유틸 함수
 def run_query(cypher, params=None):
