@@ -207,7 +207,7 @@ st.markdown(login_css, unsafe_allow_html=True)
 load_custom_font() 
 
 # 배경화면 호출  
-set_background()
+set_background(image_path)
 
 # 유저 생성 함수 선언
 def create_user_if_not_exists(user_id: str):
