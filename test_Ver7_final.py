@@ -87,7 +87,7 @@ def load_custom_font():
 
 
 # 동물의 숲 배경 설정
-def set_background_auto():
+def set_background():
     # png / jpg 중 하나 자동으로 찾기
     img_files = []
     for pattern in ("*.png", "*.jpg", "*.jpeg"):
