@@ -59,16 +59,16 @@ def load_custom_font():
     # 디버그용으로 어떤 파일 쓰는지 한 번 찍어보기
     st.write("✅ 사용 중인 폰트 파일:", font_path.name)
 
+    # ✅ base64 제거하고 file:// 경로로 직접 지정
     css = f"""
     <style>
     @font-face {{
         font-family: 'ACNH_KR';
-        src: url(data:font/ttf;base64,{encoded_font}) format('truetype');
+        src: url("file://{font_path}") format('truetype');
         font-weight: normal;
         font-style: normal;
     }}
 
-    /* === 전체 전역 폰트 적용 === */
     html, body, div, span, p, h1, h2, h3, h4, h5, h6,
     input, textarea, button,
     .stMarkdown, .stTextInput, .stButton > button,
@@ -76,7 +76,6 @@ def load_custom_font():
         font-family: 'ACNH_KR', sans-serif !important;
     }}
 
-    /* Streamlit 기본 제목도 강제 적용 */
     .stAppViewContainer h1, 
     .stAppViewContainer h2, 
     .stAppViewContainer h3 {{
@@ -86,6 +85,7 @@ def load_custom_font():
     </style>
     """
     st.markdown(css, unsafe_allow_html=True)
+
 
 
    
