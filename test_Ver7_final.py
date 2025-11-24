@@ -15,15 +15,6 @@ driver = GraphDatabase.driver(
 )
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-# -------------------------
-# ⭐ Neo4j Aura 연결 테스트 ⭐
-# -------------------------
-try:
-    driver.verify_connectivity()
-    print("✅ Neo4j Aura 연결 성공!")
-except Exception as e:
-    print("❌ Neo4j Aura 연결 실패:", repr(e))
-
 
 # Neo4j 유틸 함수
 def run_query(cypher, params=None):
@@ -38,7 +29,6 @@ import base64
 
 # 동물의 숲 폰트 설정
 from pathlib import Path
-
 BASE_DIR = Path(__file__).resolve().parent
 
 # 2. CSS로 삽입
@@ -53,8 +43,6 @@ def load_custom_font():
     # 파일 이름이 미묘하게 달라도 상관없게, 그냥 첫 번째 ttf 사용
     font_path = ttf_files[0]
 
-    # 디버그용으로 어떤 파일 쓰는지 한 번 찍어보기
-    st.write("✅ 사용 중인 폰트 파일:", font_path.name)
 
     # ✅ base64 제거하고 file:// 경로로 직접 지정
     css = f"""
@@ -98,7 +86,7 @@ def set_background():
         return
 
     img_path = img_files[0]
-    st.write("🖼 사용 중인 배경 이미지:", img_path.name)
+
 
     with open(img_path, "rb") as f:
         img_bytes = f.read()
