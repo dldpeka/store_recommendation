@@ -41,9 +41,6 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-# ✅ 폰트 / 배경 이미지 경로 (레포 기준)     # 깃허브 최상단에 둘 때
-image_paath= BASE_DIR / "배경화면1.png"
-
 # 2. CSS로 삽입
 def load_custom_font():
     # 1) 이 폴더 안에서 .ttf 파일 자동으로 찾기
