@@ -37,28 +37,17 @@ def run_query(cypher, params=None):
 import base64
 
 # 동물의 숲 폰트 설정
-
-import streamlit as st
-
-# 폰트 파일을 추가한 경로를 지정합니다.
-import streamlit as st
-import base64
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent  # 이 파이썬 파일이 있는 폴더
-font_path = BASE_DIR / "Asia신디나루M.ttf" 
+BASE_DIR = Path(__file__).resolve().parent
 
-with open(font_path, "rb") as f:
-    font_bytes = f.read()
-
-encoded_font = base64.b64encode(font_bytes).decode()
+# ✅ 폰트 / 배경 이미지 경로 (레포 기준)
+font_path= BASE_DIR / "Asia신디나루M.ttf"       # 깃허브 최상단에 둘 때
+image_paath= BASE_DIR / "배경화면1.png"
 
 # 2. CSS로 삽입
 def load_custom_font():
     import base64
-
-    font_path = "UI_build/Asia신디나루M.ttf"
-
     with open(font_path, "rb") as f:
         font_bytes = f.read()
     encoded_font = base64.b64encode(font_bytes).decode()
