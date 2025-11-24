@@ -48,6 +48,9 @@ image_paath= BASE_DIR / "배경화면1.png"
 # 2. CSS로 삽입
 def load_custom_font():
     import base64
+
+    font_path = "UI_build/Asia신디나루M.ttf"
+    
     with open(font_path, "rb") as f:
         font_bytes = f.read()
     encoded_font = base64.b64encode(font_bytes).decode()
@@ -200,7 +203,7 @@ st.markdown(login_css, unsafe_allow_html=True)
 load_custom_font() 
 
 # 배경화면 호출  
-set_background("UI_build/배경화면1.png")
+set_background()
 
 # 유저 생성 함수 선언
 def create_user_if_not_exists(user_id: str):
