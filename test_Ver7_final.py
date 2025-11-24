@@ -47,10 +47,6 @@ image_paath= BASE_DIR / "배경화면1.png"
 
 # 2. CSS로 삽입
 def load_custom_font():
-    import base64
-
-    font_path = "UI_build/Asia신디나루M.ttf"
-    
     with open(font_path, "rb") as f:
         font_bytes = f.read()
     encoded_font = base64.b64encode(font_bytes).decode()
