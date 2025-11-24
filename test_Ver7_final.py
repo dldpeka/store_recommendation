@@ -45,11 +45,13 @@ import streamlit as st
 import base64
 import os
 
-# 1. 폰트 읽어서 base64 인코딩
-font_path = os.path.join(os.path.dirname(__file__), "UI_build", "Asia신디나루M.ttf")
+
+
+font_path = os.path.join(os.path.dirname(__file__), "Asia신디나루M.ttf")
 
 with open(font_path, "rb") as f:
     font_bytes = f.read()
+
 encoded_font = base64.b64encode(font_bytes).decode()
 
 # 2. CSS로 삽입
