@@ -41,15 +41,23 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
-# ✅ 폰트 / 배경 이미지 경로 (레포 기준)
-font_path= BASE_DIR / "Asia신디나루M.ttf"       # 깃허브 최상단에 둘 때
+# ✅ 폰트 / 배경 이미지 경로 (레포 기준)     # 깃허브 최상단에 둘 때
 image_paath= BASE_DIR / "배경화면1.png"
 
 # 2. CSS로 삽입
 def load_custom_font():
-    with open(font_path, "rb") as f:
-        font_bytes = f.read()
-    encoded_font = base64.b64encode(font_bytes).decode()
+    # 1) 이 폴더 안에서 .ttf 파일 자동으로 찾기
+    ttf_files = list(BASE_DIR.glob("*.ttf"))
+
+    if not ttf_files:
+        st.warning(f"⚠️ 이 폴더에 .ttf 폰트 파일을 못 찾았어요: {BASE_DIR}")
+        return
+
+    # 파일 이름이 미묘하게 달라도 상관없게, 그냥 첫 번째 ttf 사용
+    font_path = ttf_files[0]
+
+    # 디버그용으로 어떤 파일 쓰는지 한 번 찍어보기
+    st.write("✅ 사용 중인 폰트 파일:", font_path.name)
 
     css = f"""
     <style>
