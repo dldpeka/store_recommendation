@@ -43,11 +43,10 @@ import streamlit as st
 # 폰트 파일을 추가한 경로를 지정합니다.
 import streamlit as st
 import base64
-import os
+from pathlib import Path
 
-
-
-font_path = os.path.join(os.path.dirname(__file__), "Asia신디나루M.ttf")
+BASE_DIR = Path(__file__).resolve().parent  # 이 파이썬 파일이 있는 폴더
+font_path = BASE_DIR / "Asia신디나루M.ttf" 
 
 with open(font_path, "rb") as f:
     font_bytes = f.read()
