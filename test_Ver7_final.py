@@ -88,13 +88,24 @@ def load_custom_font():
 
 
 
-   
-
 
 # 동물의 숲 배경 설정
-def set_background(image_path):
-    with open(image_path, "rb") as f:
-        encoded = base64.b64encode(f.read()).decode()
+def set_background_auto():
+    # png / jpg 중 하나 자동으로 찾기
+    img_files = []
+    for pattern in ("*.png", "*.jpg", "*.jpeg"):
+        img_files.extend(BASE_DIR.glob(pattern))
+
+    if not img_files:
+        st.warning(f"⚠️ 이 폴더에 배경 이미지(.png/.jpg)를 못 찾았어요: {BASE_DIR}")
+        return
+
+    img_path = img_files[0]
+    st.write("🖼 사용 중인 배경 이미지:", img_path.name)
+
+    with open(img_path, "rb") as f:
+        img_bytes = f.read()
+    encoded = base64.b64encode(img_bytes).decode("utf-8")
 
     page_bg = f"""
     <style>
@@ -112,6 +123,7 @@ def set_background(image_path):
     """
 
     st.markdown(page_bg, unsafe_allow_html=True)
+
 
 # -------------------------
 # ⭐️⭐️⭐️ 로그인 기본 설정 ⭐️⭐️⭐️
@@ -207,7 +219,7 @@ st.markdown(login_css, unsafe_allow_html=True)
 load_custom_font() 
 
 # 배경화면 호출  
-set_background(image_path)
+set_background()
 
 # 유저 생성 함수 선언
 def create_user_if_not_exists(user_id: str):
