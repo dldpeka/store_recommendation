@@ -78,7 +78,7 @@ def load_custom_font():
 def set_background():
     # png / jpg 중 하나 자동으로 찾기
     img_files = []
-    for pattern in ("*.png", "*.jpg", "*.jpeg"):
+    for pattern in ("*배경화면1*.png", "*.jpg", "*.jpeg"):
         img_files.extend(BASE_DIR.glob(pattern))
 
     if not img_files:
