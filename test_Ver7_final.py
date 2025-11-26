@@ -109,6 +109,24 @@ def set_background():
 
     st.markdown(page_bg, unsafe_allow_html=True)
 
+#곰돌이 불러오가
+def render_login():
+    """배경 및 곰돌이 이미지를 자동 탐색해 로그인 화면을 렌더링"""
+    # 🧸 PNG/JPG 중 하나 자동으로 찾기 (곰돌이 이미지)
+    bear_files = []
+    for pattern in ("*캐릭터(챗봇)*.png", "*bear*.png", "*.png", "*.jpg", "*.jpeg"):
+        bear_files.extend(BASE_DIR.glob(pattern))
+
+    if not bear_files:
+        st.warning(f"⚠️ 곰돌이 이미지를 찾을 수 없습니다: {BASE_DIR}")
+        return
+
+    bear_path = bear_files[0]
+
+    with open(bear_path, "rb") as f:
+        bear_bytes = f.read()
+    bear_encoded = base64.b64encode(bear_bytes).decode("utf-8")
+
 
 # -------------------------
 # ⭐️⭐️⭐️ 로그인 기본 설정 ⭐️⭐️⭐️
@@ -125,6 +143,25 @@ login_css = """
     align-items: center; 
 }
 
+/* 곰돌이 */
+    .bear {{
+        position: absolute;
+        top: -110px; /* 카드 위로 올라가게 */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 160px;
+        z-index: 10;
+        animation: wave 3s ease-in-out infinite;
+        transform-origin: 70% 70%;
+    }}
+
+/* 손 흔드는 애니메이션 */
+    @keyframes wave {{
+        0% {{ transform: translateX(-50%) rotate(0deg); }}
+        10% {{ transform: translateX(-50%) rotate(5deg); }}
+        20% {{ transform: translateX(-50%) rotate(-5deg); }}
+        100% {{ transform: translateX(-50%) rotate(0deg); }}
+    }}
 
 
 /* 로그인 박스 (주민등록 카드 스타일) */
@@ -230,15 +267,14 @@ if st.session_state["user_id"] is None:
     st.markdown(
     """
     <div class="login-container korean-text">
-      <div class="acnh-card">
-        <img class="acnh-leaf"
-             src="https://raw.githubusercontent.com/encharm/Font-Awesome-SVG-PNG/master/white/png/64/leaf.png">
-        <div class="acnh-title">먼저 닉네임을 입력해주세요</div>
-      </div>
+      <img src="data:image/png;base64,{bear_encoded}" class="bear">
+        <div class="acnh-card korean-text">
+            <img class="acnh-leaf"
+                 src="https://raw.githubusercontent.com/encharm/Font-Awesome-SVG-PNG/master/white/png/64/leaf.png">
+            <div class="acnh-title">먼저 닉네임을 입력해주세요</div>
+        </div>
     </div>
-    """,
-    unsafe_allow_html=True
-)
+    """, unsafe_allow_html=True)
 
 
     st.markdown('<div class="acnh-input" style="padding-top: 30px;">', unsafe_allow_html=True)
