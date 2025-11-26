@@ -485,7 +485,7 @@ with st.container():
             backdrop-filter: blur(4px);
             margin-top: -100px;
         ">
-            <div class="acnh-title">동네와 얘기해봐요! </div>
+            <div class="acnh-title">한바퀴🐻와 얘기해봐요! </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -516,7 +516,7 @@ with st.container():
 # 인사 멘트 목록
 INTRO_MESSAGES = [
     "안녕?😊",
-    f"나는 {user_id}의 동네에서, 취향과 상황에 맞는 가게를 추천해주는 ‘동네’라고 해!"
+    f"나는 {user_id}의 동네에서, 취향과 상황에 맞는 가게를 추천해주는 ‘한바퀴🐻’라고 해!"
 ]
 
 # 세션 상태 초기화
@@ -558,7 +558,7 @@ def render_naver_cards(rows, cols_per_row=3, height=420, selectable=False):
 
     st.markdown(
         "<div class='korean-text' style='text-align:center; font-size:20px; margin-top:12px;'>"
-        "📍 오늘 동네가 골라본 가게들이야!"
+        "📍 한바퀴🐻가 골라본 가게들이야!"
         "</div>",
         unsafe_allow_html=True,
     )
