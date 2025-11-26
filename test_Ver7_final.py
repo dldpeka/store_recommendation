@@ -78,7 +78,7 @@ def load_custom_font():
 def set_background():
     # png / jpg 중 하나 자동으로 찾기
     img_files = []
-    for pattern in ("*배경화면1*.png", "*.jpg", "*.jpeg"):
+    for pattern in ("*.png", "*.jpg", "*.jpeg"):
         img_files.extend(BASE_DIR.glob(pattern))
 
     if not img_files:
@@ -114,7 +114,7 @@ def render_login():
     """배경 및 곰돌이 이미지를 자동 탐색해 로그인 화면을 렌더링"""
     # 🧸 PNG/JPG 중 하나 자동으로 찾기 (곰돌이 이미지)
     bear_files = []
-    for pattern in ("*캐릭터(챗봇)*.png", "*bear*.png", "*.png", "*.jpg", "*.jpeg"):
+    for pattern in ("*.jpg", "*.jpeg"):
         bear_files.extend(BASE_DIR.glob(pattern))
 
     if not bear_files:
