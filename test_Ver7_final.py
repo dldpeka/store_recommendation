@@ -240,16 +240,16 @@ if st.session_state["user_id"] is None:
     </div>
     """,
     unsafe_allow_html=True
-)
+    )
 
-st.markdown('<div class="acnh-input" style="padding-top: 30px;">', unsafe_allow_html=True)
-nickname = st.text_input(
-    "",
-    placeholder="예: yedam, 홍길동 등",
-    key="acnh_nick",
-    label_visibility="collapsed"
-)
-st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div class="acnh-input" style="padding-top: 30px;">', unsafe_allow_html=True)
+    nickname = st.text_input(
+        "",
+        placeholder="예: yedam, 홍길동 등",
+        key="acnh_nick",
+        label_visibility="collapsed"
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
     # 🔹 버튼: .acnh-button 으로 감싸주기
