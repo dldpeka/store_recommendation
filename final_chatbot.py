@@ -740,6 +740,7 @@ def top_tags_by_embedding(text: str, k: int = 3):
     YIELD node, score
     RETURN node.name AS tag, score
     ORDER BY score DESC
+    LIMIT $k
     """
     return run_query(cy, {"k": k, "emb": emb})
 
