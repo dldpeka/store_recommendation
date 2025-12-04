@@ -61,10 +61,7 @@ def get_dku_weather():
     else:
         temp_bucket = "더움"
 
-    # 결과 출력 (Streamlit용)
-    st.metric(label="현재 온도 (℃)", value=f"{temp:.1f}")
-    st.write(f"체감온도: {feels_like:.1f}°C / 습도: {humidity}%")
-    st.write(f"날씨: {description} → 태그: **{weather_tag}**, 구간: **{temp_bucket}**")
+   
 
     return weather_tag, temp_bucket
 
